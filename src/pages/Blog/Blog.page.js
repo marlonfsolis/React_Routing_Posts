@@ -5,14 +5,9 @@ import './Blog.page.css'
 import FullPost from '../../components/FullPost/FullPost.component';
 import NewPost from '../../components/NewPost/NewPost.component';
 import Posts from '../../components/Posts/Posts.component';
+import QueryParamsAndHash from '../QueryParamsAndHash/QueryParamsAndHash.page';
 
 export default class Blog extends Component {
-    state = {
-        posts: [],
-        selectedPostId: null,
-        error: false
-    }
-
     render() {
         return (
             <div className="Blog">
@@ -21,6 +16,11 @@ export default class Blog extends Component {
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/Posts/NewPost">New Post</Link></li>
+                            <li><Link to={{
+                                pathname: '/QueryParamsAndHash',
+                                search: '?firstName=Marlon&lastName=Fernandez',
+                                hash: 'Hello'
+                            }}>Using Query Params and #</Link></li>
                         </ul>
                     </nav>
                 </header>
@@ -28,6 +28,7 @@ export default class Blog extends Component {
                     <Switch>
                         <Route path="/Posts/NewPost" component={NewPost} />
                         <Route path="/Posts/Details/:id" component={FullPost} />
+                        <Route path="/QueryParamsAndHash" component={QueryParamsAndHash} />
                         <Route path="/" component={Posts} />
                     </Switch>
                 </section>

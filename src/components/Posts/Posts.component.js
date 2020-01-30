@@ -14,7 +14,7 @@ export default class Posts extends Component {
     componentDidMount() {
         axios.get('/posts')
             .then(response => {
-                const posts = response.data.slice(0, 4);
+                const posts = response.data.slice(0, 10);
                 const updatedPosts = posts.map(post => {
                     return {
                         ...post,
