@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 
 import './Blog.page.css'
 import FullPost from '../../components/FullPost/FullPost.component';
@@ -14,22 +14,23 @@ export default class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/Posts/NewPost">New Post</Link></li>
-                            <li><Link to={{
+                            <li><NavLink to="/Posts" exact activeClassName="active">Home</NavLink></li>
+                            <li><NavLink to="/Posts/NewPost" activeClassName="active">New Post</NavLink></li>
+                            <li><NavLink to={{
                                 pathname: '/QueryParamsAndHash',
                                 search: '?firstName=Marlon&lastName=Fernandez',
                                 hash: 'Hello'
-                            }}>Using Query Params and #</Link></li>
+                            }} activeClassName="active" >Using Query Params and #</NavLink></li>
                         </ul>
                     </nav>
                 </header>
                 <section>
                     <Switch>
                         <Route path="/Posts/NewPost" component={NewPost} />
-                        <Route path="/Posts/Details/:id" component={FullPost} />
+                        {/*<Route path="/Posts/Details/:id" component={FullPost} />*/}
                         <Route path="/QueryParamsAndHash" component={QueryParamsAndHash} />
-                        <Route path="/" component={Posts} />
+                        <Route path="/Posts" component={Posts} />
+                        <Redirect from="/" to="/Posts" />
                     </Switch>
                 </section>
             </div>
