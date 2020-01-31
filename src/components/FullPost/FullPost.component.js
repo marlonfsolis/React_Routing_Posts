@@ -5,7 +5,6 @@ import "./FullPost.component.css";
 
 class FullPost extends Component {
   state = {
-    postId: 0,
     loadedPost: null
   };
 
@@ -23,9 +22,7 @@ class FullPost extends Component {
   componentDidMount() {
     const id = +this.props.match.params.id;
     if (id) {
-      if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== id)) {
-        this.loadPost(id);
-      }
+      this.loadPost(id);
     }
 
     // if (id) {
