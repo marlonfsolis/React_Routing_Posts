@@ -1,3 +1,10 @@
+## Available Scripts
+Project to demostrate how work with React using Classes and React-Router.
+
+We also can see how work with Axios library. And how work with live cycle events.
+
+
+## Getting Started
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
